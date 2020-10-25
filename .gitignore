@@ -12,15 +12,11 @@ data/*
 experiments/*
 mlruns/*
 models/*
+.env
 
 # Venv
 dvc-venv
 
-
-# files
-
 ## OS configs
 .DS_Store
 
-## Configs
-.env

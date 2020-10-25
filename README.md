@@ -5,25 +5,13 @@
 ------------------------
 ```
     .
-    ├── config
-    │   └── pipeline_config.yml     <- pipeline config
     ├── data
-    │   ├── external                <- external data
-    │   ├── processed               <- data after all preprocessing has been done
-    │   └── raw                     <- original unmodified data acting as source of truth and provenance
-    ├── experiments                 <- folder for experiments intermediate files
-    │   ├── models                      <- folder for ML models
-    ├── notebooks
-    ├── src
-        ├── data <- data prepare and/or preprocess
-        ├── evaluate <- evaluating model stage code 
-        ├── features <- code to compute features
-        ├── pipelines <- scripts of pipelines
-        ├── report <- visualization (often used in notebooks)
-        ├── train <- train model stage code
-        └── transforms <- transformations data code (e.g., augmentation) 
-    ├── docker-compose.yml
-    ├── Dockerfile
+    │   ├── processed               <- processed data
+    │   └── raw                     <- original unmodified/raw data
+    ├── models                      <- folder for ML models
+    ├── notebooks                   <- Jupyter Notebokos (ingored by Git)
+    ├── reports                     <- folder for experiment reports
+    ├── src                         <- source code for modules & pipelines
     └── README.md
 ```
 
@@ -32,7 +20,7 @@
 ### 1. Fork / Clone this repository
 
 ```bash
-git clone https://gitlab.com/7labs.ru/tutorials-dvc/dvc-5-demo-project-iris 
+git clone https://gitlab.com/mlrepa/course-dvc-mlops/dvc-5-demo-project-iris.git 
 cd dvc-5-demo-project-iris
 ```
 
@@ -42,6 +30,7 @@ cd dvc-5-demo-project-iris
 Create virtual environment named `dvc-venv` (you may use other name)
 ```bash
 python3 -m venv dvc-venv
+echo "export PYTHONPATH=$PWD" >> dvc-venv/bin/activate
 source dvc-venv/bin/activate
 ```
 Install python libraries
@@ -62,14 +51,54 @@ sudo jupyter contrib nbextension install
 jupyter nbextension enable toc2/main
 ```
 
-## 6. Run and follow Jupyter Notebook for instructions:
+## 3. Run Jupyter Notebook
 
 ```bash
 jupyter notebook
 ```
 
+## Tutorial 
+    
+#### Step 1: All in Junyter Notebooks 
+- run all in Jupyter Notebooks
 
-## 7. References used for this tutorial
+#### Step 2: Move code to .py modules
+- i.e. main funcitons and classes 
+
+#### Step 3: Add DVC pipelines (stages) on Python modules
+
+Add a pipeline stages code to `src/pipelines`
+
+    prepare_configs.py - load config/pipeline_config.yml and split it into configs specific for next stages
+    featurize.py - create new features
+    split_train_test.py - split source dataset into train/test
+    train.p - train classifier 
+    evaluate.py - evaluate model and create metrics file
+
+    
+#### Step 4: Automate DVC pipeline (DAG) execution
+  
+- add pipelines dependencies under DVC control
+- add models/data/configs under DVC control
+
+#### Step 5: Create CI pipeline
+- create .gitlab-ci.yml
+- create ‘build’ job
+- create ‘test’ job
+- create local gitlab-runner with Docker executor
+
+
+#### Step 6: Experiments management
+
+- create multiple experiments
+- reproduce with different parameter (changes in pipeline_config.yaml)
+- compare metrics
+
+#### Step 7: Deploy model with DVC and CML
+- add deploy job to .gitlab-ci.yml
+
+
+## References for code examples used
 
 1. [DVC tutorial](https://dvc.org/doc/tutorial)
-2. [100 - Logistic Regression with IRIS and pytorch](https://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx/notebooks/100_Logistic_IRIS.html) 
+2. [Plot a Confusion Matrix](https://www.kaggle.com/grfiv4/plot-a-confusion-matrix) 
