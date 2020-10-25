@@ -9,7 +9,7 @@ __pycache__
 
 # Project
 data/*
-experiments/*
+reports/*
 mlruns/*
 models/*
 .env
