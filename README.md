@@ -78,6 +78,12 @@ git rm --cached notebooks/*
 git commit -m "Unstage notebooks" 
 ```
 Note: this will remove files from the Git index only! Files won’t be deleted from the disk
+___
+IMPORTANT: 
+- If you `Remove notebooks from the Git index and commit changes` (see above), do any changes in notebooks and switch back to `step-1` / `step-7` branches, all changes will be lost
+- It's not recommended to version your Jupyter Notebooks at all
+- We would recommend to treat Jupyter Notebooks as artifacts for your experiments  
+___
 
 3 - Run Jupyter Notebooks
 ```bash
