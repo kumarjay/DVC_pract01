@@ -24,6 +24,16 @@ git clone https://gitlab.com/mlrepa/course-dvc-mlops/dvc-5-demo-project-iris.git
 cd dvc-5-demo-project-iris
 ```
 
+### 2. Create a `master` branch and make it a default branch 
+```bash
+git checkout -b master
+``` 
+To make the `master` branch a default branch: 
+1. At the GitLab repository page go to Settings -> Repository -> Default Branch
+2. Click Expand;
+3. Select `master` branch -> `Save changes`
+
+ 
 
 ### 2. Create and activate virtual environment
 
@@ -53,6 +63,23 @@ jupyter nbextension enable toc2/main
 
 ## 3. Run Jupyter Notebook
 
+Jupyter Notebooks in `notebooks/` directory are for example only. 
+To remove them (recommended) from `git` version control run: 
+
+1 - Add the following string to `.gitignore`
+```.gitignore
+notebook/*
+git add .gitignore
+git commit -m "Update .gitignore: add notebooks/* " 
+```
+2 - Remove notebooks from the Git index and commit changes
+```bash
+git rm --cached notebooks/*
+git commit -m "Unstage notebooks" 
+```
+Note: this will remove files from the Git index only! Files won’t be deleted from the disk
+
+3 - Run Jupyter Notebooks
 ```bash
 jupyter notebook
 ```
