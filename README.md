@@ -68,7 +68,7 @@ To remove them (recommended) from `git` version control run:
 
 1 - Add the following string to `.gitignore`
 ```.gitignore
-notebook/*
+notebooks/*
 git add .gitignore
 git commit -m "Update .gitignore: add notebooks/* " 
 ```
@@ -92,7 +92,7 @@ jupyter notebook
 
 ## Tutorial 
     
-#### Step 1: All in Junyter Notebooks 
+#### Step 1: All in Jupyter Notebooks 
 - run all in Jupyter Notebooks
 
 #### Step 2: Move code to .py modules
