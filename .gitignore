@@ -13,6 +13,7 @@ reports/*
 mlruns/*
 models/*
 .env
+*.ipynb
 
 # Venv
 dvc-venv
