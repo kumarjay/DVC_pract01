@@ -21,7 +21,7 @@
 
 ```bash
 git clone https://gitlab.com/mlrepa/course-dvc-mlops/dvc-5-demo-project-iris.git 
-cd dvc-5-demo-project-iris
+cd dvc_5_demo_project_iris
 ```
 
 ### 2. Create a `master` branch and make it a default branch 

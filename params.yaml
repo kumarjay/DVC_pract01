@@ -1,5 +1,5 @@
 base:
-  project: dvc-5-demo-project-iris
+  project: dvc_5_demo_project_iris
 
   model:
     model_name: model.joblib
