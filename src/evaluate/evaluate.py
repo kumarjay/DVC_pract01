@@ -5,7 +5,7 @@ from sklearn.base import BaseEstimator
 from typing import Text, Tuple
 
 
-def evaluate(df= pd.DataFrame, target_column= Text, clf= BaseEstimator) -> Tuple(float, np.ndarray):
+def evaluate(df= pd.DataFrame, target_column= Text, clf= BaseEstimator) -> Tuple[float, np.ndarray]:
     y_test = df.loc[:, 'target'].values.astype('int32')
     X_test = df.drop('target', axis=1).values.astype('float32')
     prediction = clf.predict(X_test)
